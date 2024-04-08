@@ -1,59 +1,3 @@
-#test
-#test2
-#test3
-import win32gui
-import win32con
-
-#hwnd = win32gui.FindWindow('MapleSroty.exe', None)
-import tkinter as tk
-import ctypes
-
-import win32api
-import win32process
-#import win32con
-#import ctypes
-
-from ctypes import wintypes as w
-
-hwnd = win32gui.FindWindow(None, 'MapleStory')
-
-
-
-pos = win32gui.GetWindowRect(hwnd)
-
-
-
-#print(hwnd)
-# hwnd = win32gui.FindWindow('xx.exe', None)
-# 窗口需要正常大小且在后台，不能最小化
-win32gui.ShowWindow(hwnd, win32con.SW_SHOWNORMAL)
-# 窗口需要最大化且在后台，不能最小化
-# ctypes.windll.user32.ShowWindow(hwnd, 3)
-win32gui.SetForegroundWindow(hwnd)
-
-
-win32gui.SetWindowPos(hwnd, win32con.HWND_DESKTOP, 0,0,0,0, win32con.SWP_NOSIZE)   
-
-
-print('MapleStory =', hwnd)
-
-print('pos =', pos[0])
-print('pos =', pos)
-
-toolpos = '+%d+%d' %(pos[2], pos[1])
-
-window = tk.Tk()
-window.title('GUI')
-window.geometry('380x400')
-window.resizable(False, False)
-#window.iconbitmap('icon.ico')
-
-
-window.geometry(toolpos)
-
-
-
-
 import ctypes as c
 from ctypes import wintypes as w
 
@@ -75,7 +19,7 @@ CloseHandle.restype = w.BOOL
 
 processHandle = OpenProcess(0x10, False, pid)
 
-addr = 0x146475F88  # Minesweeper.exe module base address
+addr = 0x147F67278 # Minesweeper.exe module base address
 data = c.c_ulonglong()
 bytesRead = c.c_ulonglong()
 result = ReadProcessMemory(processHandle, addr, c.byref(data), c.sizeof(data), c.byref(bytesRead))
@@ -85,7 +29,7 @@ print('result: {}, err code: {}, bytesRead: {}'.format(result,e,bytesRead.value)
 print('data: {:016X}h'.format(data.value))
 
 
-offsets = [0x23BC]
+offsets = [0x28, 0x19300]
 
 
 offsets.append(None)
@@ -115,19 +59,3 @@ print('offser data: {:016X}h'.format(data.value))
 
 
 CloseHandle(processHandle)
-
-
-
-test = tk.Button(text="測試")
-test.pack(side="top")
-
-j = data.value
-
-i = 'my label = %d' %(j)
-
-label = tk.Label(text= i, font=("Arial", 14, "bold"), padx=5, pady=5, bg="red", fg="yellow")
-
-label.pack()
-
-
-window.mainloop()
