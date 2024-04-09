@@ -1,0 +1,11 @@
+{
+  "additionalFiles": "..\\..\\..,..\\..\\..",
+  "builtInToolsFolders": "",
+  "compiler.optimization_flags": "-Os",
+  "customBuildProperties": "",
+  "fqbn": "esp32:esp32:node32s:PartitionScheme=no_ota,FlashFreq=80,UploadSpeed=115200,DebugLevel=none,EraseFlash=none",
+  "hardwareFolders": "C:\\Users\\s9100\\AppData\\Local\\Arduino15\\packages",
+  "otherLibrariesFolders": "C:\\Users\\s9100\\OneDrive\\Documents\\Arduino\\libraries",
+  "runtime.ide.version": "10607",
+  "sketchLocation": "D:\\MapleStoryAutoTool\\arduino"
+}
